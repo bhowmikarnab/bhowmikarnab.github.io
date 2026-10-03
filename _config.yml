@@ -1,0 +1,42 @@
+# Site settings. GitHub reads this file every time it builds the site.
+# After changing it, the site updates in about a minute.
+
+title: Arnab Bhowmik
+tagline: Research Scholar in theoretical physics
+description: >-
+  Arnab Bhowmik, Research Scholar (PhD, Physics) at IIEST Shibpur, studying
+  Bose–Einstein condensates, quantum droplets and dipolar quantum gases.
+author: Arnab Bhowmik
+url: https://bhowmikarnab.github.io
+baseurl: ""
+lang: en
+timezone: Asia/Kolkata
+
+# Blog posts live at /blog/2026/10/post-title/ and notes at /notes/note-title/
+permalink: /blog/:year/:month/:title/
+collections:
+  notes:
+    output: true
+    permalink: /notes/:title/
+
+# Every blog post and note uses the article layout (equations, margin notes, reading time)
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post, section: blog, katex: true }
+  - scope: { path: "", type: notes }
+    values: { layout: post, section: notes, katex: true }
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  footnote_backlink: "↩"
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - HOW-TO-UPDATE.md
+  - _templates/

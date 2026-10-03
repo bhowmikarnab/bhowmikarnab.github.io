@@ -1,0 +1,50 @@
+/* Publications page (final design, 2026-10-03):
+   1 top bar: PUBLICATIONS left, "N WORKS · UPDATED MON YYYY" right
+   2 small two-tone year (outlined + solid digits) sitting on the divider above each year group, staying in view while its papers scroll
+   3 paper opener: accent-coloured number, vertical and short horizontal rules, type label
+   4 solid bar "ABSTRACT … journal reference", the abstract with a large first letter, then DOI / ARXIV / CITE */
+.pubs{padding:calc(52px + min(7vh,64px)) 8vw 0 6vw}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);padding-bottom:22px;border-bottom:1px solid var(--rule)}
+.topbar h1{font:inherit;font-size:12px;color:inherit;letter-spacing:inherit}
+.yg{display:grid;grid-template-columns:clamp(70px,8vw,96px) minmax(0,1fr);gap:0 3.4vw;border-bottom:1px solid var(--rule)}
+.yg:last-child{border-bottom:0}
+.pubs .yr{position:sticky;top:64px;align-self:start;z-index:2;margin-top:-.62em;justify-self:start;padding-right:10px;background:var(--bg);transition:background .3s;font-family:var(--f-display);font-size:clamp(18px,1.9vw,24px);font-weight:400;line-height:1.2;letter-spacing:-.01em;color:var(--acc);font-variant-numeric:lining-nums;white-space:nowrap}
+.yr .o{font-weight:400;color:transparent;-webkit-text-stroke:1px var(--acc)}
+.yr .s{font-weight:700}
+.paper{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:4vw;padding:40px 0 46px}
+.paper+.paper{border-top:1px solid var(--rule)}
+.big{display:flex;align-items:stretch;gap:16px}
+.big .n{font-family:var(--f-display);font-weight:400;font-size:clamp(64px,7.4vw,104px);line-height:.82;color:var(--acc);font-variant-numeric:lining-nums}
+.big .bar{width:2px;background:var(--fg)}
+.big .lbl{display:flex;align-items:center;font-family:var(--f-display);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase}
+.paper .t{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(18px,1.95vw,27px);line-height:1.14;letter-spacing:.01em;margin-top:24px}
+.paper .t a{text-decoration:none}
+.paper .t a:hover,.paper .t a:focus-visible{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.rr{width:58px;height:3px;background:var(--fg);margin:18px 0 14px}
+.au{font-size:14px;color:var(--muted)}
+.au strong{color:var(--fg);font-weight:600}
+.pubs .rh{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2px 14px;background:var(--fg);color:var(--bg);font-family:var(--f-display);font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;padding:4px 10px;margin-bottom:16px}
+.abs{font-family:var(--f-display);font-size:14.5px;line-height:1.68;text-align:justify;hyphens:auto}
+.abs::first-letter{float:left;font-size:3.1em;line-height:.84;padding:5px 9px 0 0;font-weight:600;color:var(--acc)}
+.pubs .act{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em}
+.act a,.act .tg{text-decoration:none;position:relative}
+.act a::after,.act .tg::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.act a:hover::after,.act a:focus-visible::after,.act .tg:hover::after,.act .tg:focus-visible::after,.act .tg[aria-expanded="true"]::after{transform:scaleX(1)}
+.tg .pm{display:inline-block;width:.8em;text-align:center}
+.panel{margin-top:14px;padding:4px 0 4px 16px;border-left:2px solid var(--acc)}
+.panel pre{font-family:var(--f-mono);font-size:12px;line-height:1.55;white-space:pre-wrap;word-break:break-word;margin:0}
+.pubs .copy{margin-top:10px;font-size:13px;border:1px solid var(--rule);border-radius:999px;padding:4px 12px}
+.pubs .copy:hover,.pubs .copy:focus-visible{border-color:currentColor}
+.pubs .empty{font-family:var(--f-display);font-style:italic;color:var(--muted);padding:40px 0}
+@media (max-width:900px){.paper{grid-template-columns:minmax(0,1fr);gap:26px}}
+@media (max-width:760px){
+  .pubs{padding:88px 20px 0}
+  .topbar{font-size:10px;letter-spacing:.14em}
+  .topbar h1{font-size:11px}
+  .yg{grid-template-columns:minmax(0,1fr)}
+  .pubs .yr{position:static;font-size:19px}
+  .paper{padding:22px 0 36px;gap:22px}
+  .big .n{font-size:64px}
+  .paper .t{font-size:19px}
+  .abs{text-align:left;hyphens:manual}
+}

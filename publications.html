@@ -1,0 +1,16 @@
+---
+layout: default
+title: Publications
+description: Papers and preprints by Arnab Bhowmik on Bose–Einstein condensates, quantum droplets and collective excitations, with abstracts and BibTeX.
+section: publications
+permalink: /publications/
+styles: ["/assets/css/publications.css"]
+scripts: ["/assets/js/publications.js"]
+---
+{%- comment -%} The papers come from _data/publications.yml; this page needs no editing to add one. {%- endcomment %}
+<main id="main" class="pubs">
+  <div class="topbar"><h1>Publications</h1><p id="tally"></p></div>
+  <div id="groups"></div>
+  <noscript><p class="empty">Please turn on JavaScript to see the list of papers.</p></noscript>
+</main>
+<script>window.PUBS = {{ site.data.publications | jsonify }}; window.PUB_UPDATED = "{{ site.time | date: '%b %Y' }}";</script>

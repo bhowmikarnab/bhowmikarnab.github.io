@@ -1,0 +1,70 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# YOUR PAPERS, NEWEST FIRST.
+# The Publications page and the "Recent works" list on the home page (the two
+# newest papers) are both made from this one file.
+#
+# TO ADD A PAPER: copy one whole block below — from its "- title:" line down to
+# the end of its bibtex — paste it at the TOP of the list, and change the text.
+#   • Keep the two spaces at the start of each line, exactly as below.
+#   • Put titles and author lists inside "double quotes".
+#   • Leave a line empty ("") if you don't have it yet, e.g.  arxiv: ""
+# ─────────────────────────────────────────────────────────────────────────────
+
+- title: "Collective Excitations of Quantum Droplets in Spin-1 Bose-Einstein Condensate in Polar Phase"
+  year: 2026
+  type: "Preprint"                       # e.g. Preprint, Journal article, Conference paper
+  authors: "Arnab Bhowmik, Dwipesh Majumder, Avra Banerjee"    # your name is made bold automatically
+  reference: "SSRN preprint (2026)"      # shown in the dark bar above the abstract
+  doi: "10.2139/ssrn.7454627"            # only the number, without https://doi.org/
+  arxiv: ""                              # e.g. 2510.13383
+  abstract: >
+    We study the ground state and collective excitation spectrum of a homogeneous, spherical,
+    self-bound quantum droplet in a spin-1 spinor Bose-Einstein condensate in the polar phase.
+    In the regime of negative spin-independent interaction strength, tunable through the
+    scattering lengths and repulsive (antiferromagnetic-type) spin-dependent coupling, the
+    attractive mean-field collapse is arrested by quantum fluctuations in both the density and
+    spin channels, giving rise to a self-trapped droplet phase. We show the extended
+    Gross-Pitaevskii equation (GPE) for the polar order parameter, which includes the
+    Lee-Huang-Yang (LHY) correction and its explicit dependence on the quadratic Zeeman shift,
+    which controls the droplet and its density. We compute the Bogoliubov-de Gennes (BdG)
+    excitation spectrum in the presence of a quadratic Zeeman field and identify two types of
+    excitation branches, namely, density and spin-wave modes.
+  bibtex: |
+    @misc{Bhowmik2026,
+      author    = {Bhowmik, Arnab and Majumder, Dwipesh and Banerjee, Avra},
+      title     = {Collective Excitations of Quantum Droplets in Spin-1 {Bose-Einstein} Condensate in Polar Phase},
+      year      = {2026},
+      publisher = {SSRN},
+      note      = {Preprint},
+      doi       = {10.2139/ssrn.7454627}
+    }
+
+- title: "Collective excitation of Bose-Einstein condensate of Bose atoms with Pöschl-Teller interaction"
+  year: 2025
+  type: "Journal article"
+  authors: "Avra Banerjee, Arnab Bhowmik, Dwipesh Majumder"
+  reference: "Physics Letters A 562, 131006 (2025)"
+  doi: "10.1016/j.physleta.2025.131006"
+  arxiv: "2510.13383"
+  abstract: >
+    We investigate the collective excitations of Bose atoms in the condensate phase with
+    finite-range interactions, modeled using the Pöschl-Teller (PT) potential to explicitly
+    account for the finite interaction range. Utilizing Bogoliubov theory, we derive the
+    excitation spectrum and examine its dependence on interaction parameters. Our analysis
+    reveals that the emergence and disappearance of the roton minima are directly influenced by
+    the range of the PT interaction. Furthermore, we calculate the static structure factor and
+    find enhanced correlations in the low-momentum regime, with their nature controlled by the
+    characteristics of the PT potential. We have examined the interaction dependence of sound
+    velocity and compressibility in detail.
+  bibtex: |
+    @article{Banerjee2025,
+      author        = {Banerjee, Avra and Bhowmik, Arnab and Majumder, Dwipesh},
+      title         = {Collective excitation of {Bose-Einstein} condensate of {Bose} atoms with {P{\"o}schl-Teller} interaction},
+      journal       = {Physics Letters A},
+      volume        = {562},
+      pages         = {131006},
+      year          = {2025},
+      doi           = {10.1016/j.physleta.2025.131006},
+      eprint        = {2510.13383},
+      archivePrefix = {arXiv}
+    }

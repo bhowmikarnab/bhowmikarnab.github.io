@@ -1,0 +1,15 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# YOUR CODE PROJECTS, shown on the Code page (newest or most important first).
+# While this list is empty, the Code page says that projects are coming soon.
+#
+# TO ADD A PROJECT: copy the example block below, remove the "# " at the start
+# of each of its lines, and change the text. Keep the two spaces of indentation.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# - name: "Droplet ground states"
+#   description: "Imaginary-time solver for the extended Gross–Pitaevskii equation with the Lee–Huang–Yang term."
+#   code: "https://github.com/bhowmikarnab/your-repository"
+#   paper: "https://doi.org/10.2139/ssrn.7454627"     # leave "" if there is no paper
+#   language: "Python"
+#   method: "Split-step Fourier"
+#   licence: "MIT"

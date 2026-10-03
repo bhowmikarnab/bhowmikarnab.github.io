@@ -1,0 +1,24 @@
+---
+layout: default
+---
+{%- comment -%} One blog post or one note: title, one-line summary, date, reading time, the text, then links to the previous / next one. {%- endcomment -%}
+{%- if page.collection == "notes" %}{% assign back = "/notes/" %}{% assign back_name = "notes" %}{% else %}{% assign back = "/blog/" %}{% assign back_name = "posts" %}{% endif -%}
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
+<main id="main">
+<article class="page post">
+  <a class="crumb" href="{{ back | relative_url }}">← ALL {{ back_name | upcase }}</a>
+  <h1 class="post-t">{{ page.title }}</h1>
+  {%- if page.description %}
+  <p class="stand">{{ page.description }}</p>
+  {%- endif %}
+  <p class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time><span>{{ minutes }} min read</span>{% if page.topics %}<span>Topics: {{ page.topics | join: ", " }}</span>{% endif %}</p>
+  <div class="prose" id="prose">
+{{ content }}
+  </div>
+  <nav class="pnav" aria-label="More {{ back_name }}">
+    {%- if page.previous %}<a class="ln" href="{{ page.previous.url | relative_url }}"><span>Previous</span>{{ page.previous.title }}</a>{% else %}<a class="ln" href="{{ back | relative_url }}"><span>Back to</span>All {{ back_name }}</a>{% endif %}
+    {%- if page.next %}<a class="ln pn-next" href="{{ page.next.url | relative_url }}"><span>Next</span>{{ page.next.title }}</a>{% endif %}
+  </nav>
+</article>
+</main>

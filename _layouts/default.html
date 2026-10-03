@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" class="no-js" data-theme="dark">
+<head>
+{% include head.html %}
+</head>
+<body class="{% if page.home %}home{% elsif page.body_class %}{{ page.body_class }}{% else %}inner{% endif %}">
+<a class="skip" href="#main">Skip to content</a>
+{% include header.html %}
+{{ content }}
+{%- if page.footer != false %}
+{% include footer.html %}
+{%- endif %}
+<p class="toast" id="toast" role="status" aria-live="polite"></p>
+<script src="{{ '/assets/js/site.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/music.js' | relative_url }}"></script>
+{%- if page.katex %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" defer></script>
+<script src="{{ '/assets/js/post.js' | relative_url }}" defer></script>
+{%- endif %}
+{%- for js in page.scripts %}
+<script src="{{ js | relative_url }}"></script>
+{%- endfor %}
+</body>
+</html>

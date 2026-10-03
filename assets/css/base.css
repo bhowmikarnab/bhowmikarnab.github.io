@@ -1,0 +1,83 @@
+/* Arnab Bhowmik · styles shared by every page: colours, fonts, header, menus, footer.
+   Colours (chosen 2026-09-30): DARK = scheme 14 "Marple raspberry", LIGHT = scheme 13 "Merino study".
+   Fonts (set 18 "Typewriter scholar"): Spectral for headings, Karla for text, Courier Prime for labels. */
+:root{--glass:255,227,179;--bgrgb:35,33,34;--bg:#232122;--surface:#312C2D;--fg:#FFE3B3;--muted:#BFAE95;--acc:#FF6766;--rule:rgba(255,227,179,.22);--solid:rgba(49,44,45,.86);--card:rgba(45,41,42,.95);--g1:255,103,102;--g2:202,40,81;--g3:255,177,115;--vl:62%;--va:.5;
+  --f-display:"Spectral",Georgia,serif;--f-body:"Karla",system-ui,sans-serif;--f-mono:"Courier Prime","Courier New",monospace;color-scheme:dark}
+:root[data-theme="light"]{--glass:41,39,40;--bgrgb:241,241,236;--bg:#F1F1EC;--surface:#E3DED0;--fg:#292728;--muted:#626349;--acc:#43442B;--rule:rgba(41,39,40,.2);--solid:rgba(227,222,208,.86);--card:rgba(248,247,243,.94);--g1:147,148,116;--g2:67,68,43;--g3:208,199,179;--vl:52%;--va:.34;color-scheme:light}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;transition:background .3s,color .3s}
+[hidden]{display:none!important}
+a{color:inherit}
+button{background:none;border:0;border-radius:0;padding:0;margin:0;font:inherit;color:inherit;letter-spacing:inherit;line-height:inherit;cursor:pointer;text-align:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:3px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+:where(.inner,.nf) :where(p,h1,h2,h3){margin:0}
+/* "Skip to content" for keyboard users: hidden until it gets focus */
+.skip{position:fixed;left:12px;top:-60px;z-index:20;background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:6px;font-size:14px;text-decoration:none;transition:top .2s}
+.skip:focus{top:10px}
+
+/* ---------- header ---------- */
+#hd{position:fixed;top:0;left:0;right:0;height:52px;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 22px;transition:background .3s}
+#hd::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;z-index:-1;pointer-events:none;background:linear-gradient(rgba(var(--bgrgb),.85) 25%,rgba(var(--bgrgb),0))}
+#hd.solid{background:var(--solid);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+#hd.solid::before{display:none}
+.rule{position:fixed;top:52px;left:22px;right:22px;height:1px;transform:scaleY(.5);background:var(--rule);z-index:5}
+.lg{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.logo{font-family:var(--f-display);font-size:23px;font-weight:600;letter-spacing:-.06em;line-height:1}
+.logo i{font-style:normal;color:var(--acc)}
+.hn{display:flex;align-items:center;gap:10px;transition:opacity .35s,transform .35s}
+.home .hn{opacity:0;transform:translateX(-6px)}          /* home: the name beside the logo appears once you scroll */
+.home .hn.on{opacity:1;transform:none}
+.dv{width:1px;height:22px;background:var(--fg);opacity:.4}
+.nt{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;line-height:1.4;text-align:left}
+nav.menu{display:flex;align-items:center;gap:16px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em}
+nav.menu a,.drop a{color:inherit;text-decoration:none;position:relative}
+/* hover / keyboard focus: a bold underline slides in under the menu item; the current page keeps it */
+nav.menu a::after,.drop a::after,.ddb::after,.msb::after{content:"";position:absolute;left:0;right:.1em;bottom:-5px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+nav.menu a:hover::after,nav.menu a:focus-visible::after,.drop a:hover::after,.drop a:focus-visible::after,.ddb:hover::after,.ddb:focus-visible::after,.dd.open .ddb::after,.msb:hover::after,.msb:focus-visible::after,.msub.open .msb::after,
+nav.menu a[aria-current="page"]::after,.drop a[aria-current="page"]::after,.ddb.cur::after,.msb.cur::after{transform:scaleX(1)}
+/* WRITING dropdown (Notes + Blog): opens on hover or click */
+.dd{position:relative;display:inline-flex}
+.ddb{display:inline-flex;align-items:center;gap:5px;position:relative}
+.ddb svg{width:10px;height:10px;transition:transform .2s ease}.dd.open .ddb svg{transform:rotate(180deg)}
+.ddm{position:absolute;top:calc(100% + 16px);left:50%;min-width:150px;padding:6px;z-index:8;background:var(--solid);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--rule);border-radius:10px;opacity:0;visibility:hidden;transform:translate(-50%,-4px);transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s}
+.ddm::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px}
+.dd.open .ddm{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .18s ease,transform .18s ease}
+nav.menu .ddm a{display:block;padding:10px 12px}nav.menu .ddm a::after{display:none}
+.ddt{position:relative;display:inline-block}
+.ddt::after{content:"";position:absolute;left:0;right:.1em;bottom:-4px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.ddm a:hover .ddt::after,.ddm a:focus-visible .ddt::after,.ddm a[aria-current="page"] .ddt::after{transform:scaleX(1)}
+/* phone menu: WRITING opens a small side panel to the left of the menu */
+.msub{position:relative}
+.msb{position:relative}
+.msb svg{position:absolute;left:-15px;top:50%;width:10px;height:10px;margin-top:-5px}
+.mfly{position:absolute;top:-14px;left:-28px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:14px 20px;background:var(--solid);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--rule);border-radius:10px;opacity:0;visibility:hidden;transform:translateX(calc(-100% + 8px));transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s}
+.msub.open .mfly{opacity:1;visibility:visible;transform:translateX(-100%);transition:opacity .18s ease,transform .18s ease}
+/* sound + light/dark switch share one frosted-glass capsule */
+.ib{padding:5px;border-radius:999px;display:inline-flex;align-items:center;transition:background .2s}
+.ib:hover,.ib:focus-visible{background:rgba(var(--glass),.14)}
+.ib svg{width:15px;height:15px}
+.icons{display:inline-flex;align-items:center;gap:6px}
+.glass{display:inline-flex;align-items:center;gap:1px;padding:2px;border-radius:999px;background:rgba(var(--glass),.07);border:1px solid rgba(var(--glass),.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%)}
+.gdv{width:1px;height:13px;background:rgba(var(--glass),.22)}
+.glass .ib svg{width:13px;height:13px}
+.mob{display:none;align-items:center;gap:6px}
+.drop{display:none;position:fixed;top:58px;right:12px;z-index:7;background:var(--solid);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--rule);border-radius:10px;padding:14px 20px;flex-direction:column;align-items:flex-start;gap:14px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em}
+.drop.open{display:flex}
+/* small message at the bottom of the screen (e.g. "Copied") */
+.toast{position:fixed;left:50%;bottom:22px;z-index:9;transform:translate(-50%,8px);background:var(--solid);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--rule);border-radius:999px;padding:8px 16px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90%;text-align:center;margin:0}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- footer (inner pages) ---------- */
+.ft{margin:80px 8vw 0 6vw;padding:20px 0 34px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:6px 30px;font-size:13px;color:var(--muted);align-items:baseline}
+.ft p{margin:0}
+.ft .tt{margin-left:auto;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--muted)}
+.ft .tt:hover,.ft .tt:focus-visible{text-decoration-color:currentColor}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
+@media (max-width:760px){
+  nav.menu{display:none}.mob{display:flex}
+  .inner .nt,.inner .dv,.nf .nt,.nf .dv{display:none}
+  .ft{margin:60px 20px 0}
+}

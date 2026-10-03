@@ -1,0 +1,26 @@
+---
+layout: default
+title: Notes
+description: Derivations, methods and technical notes by Arnab Bhowmik on ultracold quantum gases.
+section: notes
+permalink: /notes/
+styles: ["/assets/css/pages.css"]
+---
+{%- comment -%} Every file in the _notes folder appears here, newest first. {%- endcomment %}
+{%- assign notes = site.notes | sort: "date" | reverse -%}
+{%- assign count = notes | size -%}
+<main id="main" class="page">
+  <section class="hero">
+    <h1 class="pt">Notes</h1>
+    <p class="lede">Derivations, methods and technical notes from my research.</p>
+  </section>
+  {%- if count > 0 %}
+  <ol class="nl" reversed>
+    {%- for n in notes %}
+    <li><a class="nl-a" href="{{ n.url | relative_url }}"><span class="nl-d"><time datetime="{{ n.date | date_to_xmlschema }}">{{ n.date | date: "%-d %b %Y" }}</time></span><span><span class="nl-t">{{ n.title }}</span>{% if n.description %}<span class="nl-x">{{ n.description }}</span>{% endif %}</span><span class="nl-g">{{ n.topics | join: ", " }}</span></a></li>
+    {%- endfor %}
+  </ol>
+  {%- else %}
+  <p class="empty">The first notes are on their way.</p>
+  {%- endif %}
+</main>

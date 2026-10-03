@@ -1,0 +1,101 @@
+/* Code, Notes and Blog pages, and a single post or note. Same left/right margins as the home chapters. */
+.page{padding:0 8vw 0 6vw;position:relative}
+.hero{padding:calc(52px + 12vh) 0 7vh}
+.pt{font-family:var(--f-display);font-weight:600;font-size:clamp(42px,6.4vw,88px);line-height:.98;letter-spacing:-.025em;margin:0}
+.lede{font-family:var(--f-display);font-style:italic;font-size:clamp(17px,1.6vw,21px);line-height:1.5;max-width:34ch;margin:20px 0 0}
+.lede a,.ln{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--muted);transition:text-decoration-color .2s}
+.lede a:hover,.lede a:focus-visible,.ln:hover,.ln:focus-visible{text-decoration-color:currentColor}
+.empty{font-family:var(--f-display);font-style:italic;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:var(--muted);border-top:1px solid var(--rule);padding:26px 0 0;margin:0;max-width:60ch}
+/* small typewriter-caps links, as on the home page */
+.act{display:flex;flex-wrap:wrap;gap:8px 20px;margin:12px 0 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em}
+.act a{text-decoration:none;position:relative}
+.act a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.act a:hover::after,.act a:focus-visible::after{transform:scaleX(1)}
+
+/* Code: one row per project (from _data/code.yml) */
+.proj{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.pj{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:4vw;padding:22px 0 24px;border-bottom:1px solid var(--rule)}
+.pj-n{font-family:var(--f-display);font-weight:600;font-size:clamp(20px,2vw,27px);line-height:1.2;margin:0}
+.pj-d{font-size:15px;line-height:1.6;margin:8px 0 0;max-width:56ch}
+.pj-m{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 16px;margin:4px 0 0;font-size:14px}
+.pj-m dt{color:var(--muted)}.pj-m dd{margin:0}
+
+/* Notes: a compact index */
+.nl{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.nl-a{display:grid;grid-template-columns:clamp(92px,11vw,140px) minmax(0,1fr) auto;gap:3vw;padding:18px 0 20px;border-bottom:1px solid var(--rule);text-decoration:none;align-items:baseline}
+.nl-d{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.nl-t{display:block;font-family:var(--f-display);font-weight:600;font-size:clamp(19px,1.85vw,24px);line-height:1.25}
+.nl-x{display:block;font-size:15px;line-height:1.55;color:var(--muted);margin-top:4px;max-width:62ch}
+.nl-g{font-size:13px;color:var(--muted);text-align:right;white-space:nowrap}
+a.nl-a:hover .nl-t,a.nl-a:focus-visible .nl-t{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+
+/* Blog: fewer, larger entries */
+.bl{list-style:none;margin:0;padding:0}
+.bp{display:grid;grid-template-columns:clamp(92px,11vw,140px) minmax(0,1fr);gap:3vw;padding:30px 0 34px;border-top:1px solid var(--rule)}
+.bp-d{font-family:var(--f-mono);font-size:12px;color:var(--muted);padding-top:.7em}
+.bp-t{font-family:var(--f-display);font-weight:600;font-size:clamp(24px,2.9vw,40px);line-height:1.1;letter-spacing:-.01em;margin:0;max-width:24ch}
+.bp-t a{text-decoration:none}
+.bp-t a:hover,.bp-t a:focus-visible{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.bp-x{font-family:var(--f-display);font-size:clamp(16px,1.4vw,18.5px);line-height:1.62;margin:12px 0 0;max-width:60ch}
+.bp-m{font-size:13px;color:var(--muted);margin:12px 0 0}
+
+/* A single post or note */
+.post{padding-top:88px}
+.crumb{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-decoration:none;position:relative}
+.crumb::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.crumb:hover::after,.crumb:focus-visible::after{transform:scaleX(1)}
+.post-t{font-family:var(--f-display);font-weight:600;font-size:clamp(34px,4.6vw,62px);line-height:1.04;letter-spacing:-.02em;margin:22px 0 0;max-width:20ch}
+.stand{font-family:var(--f-display);font-style:italic;font-size:clamp(18px,1.65vw,22px);line-height:1.5;margin:16px 0 0;max-width:46ch}
+.meta{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:13.5px;color:var(--muted);margin:18px 0 0;padding-bottom:22px;border-bottom:1px solid var(--rule);width:min(640px,58vw)}
+.prose{width:min(640px,58vw);font-family:var(--f-display);font-size:clamp(17px,1.45vw,19px);line-height:1.75;margin-top:28px}
+.prose p,.prose ul,.prose ol,.prose blockquote,.prose table{margin:0 0 1.1em}
+.prose ul,.prose ol{padding-left:1.3em}
+.prose li{margin:0 0 .35em}
+.prose h2{font-family:var(--f-display);font-weight:600;font-size:1.32em;line-height:1.2;margin:1.6em 0 .5em}
+.prose h3{font-family:var(--f-display);font-weight:600;font-size:1.1em;line-height:1.25;margin:1.4em 0 .4em}
+.prose a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--muted)}
+.prose a:hover,.prose a:focus-visible{text-decoration-color:currentColor}
+.prose blockquote{margin-left:0;padding-left:18px;border-left:2px solid var(--acc);font-style:italic}
+.prose img{display:block;max-width:100%;height:auto;margin:1.5em auto}
+.prose figure{margin:1.5em 0}
+.prose figcaption,.prose img+em{display:block;font-family:var(--f-body);font-style:normal;font-size:14px;line-height:1.5;color:var(--muted);margin-top:8px}
+.prose hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+.prose table{border-collapse:collapse;font-family:var(--f-body);font-size:15px;display:block;overflow-x:auto}
+.prose th,.prose td{padding:6px 12px;border-bottom:1px solid var(--rule);text-align:left}
+.prose code{font-family:var(--f-mono);font-size:.86em}
+.prose pre{font-family:var(--f-mono);font-size:13px;line-height:1.6;background:var(--surface);border-radius:6px;padding:16px 18px;margin:1.2em 0 1.4em;overflow-x:auto;tab-size:4}
+.prose pre code{font-size:inherit}
+.prose .highlight{background:none}
+/* syntax colours for code blocks: comments muted, everything else in the text colour */
+.prose .c,.prose .c1,.prose .cm,.prose .cp,.prose .cs,.prose .sd{color:var(--muted);font-style:italic}
+.prose .s,.prose .s1,.prose .s2,.prose .k,.prose .kn,.prose .kd,.prose .mi,.prose .mf{color:var(--fg)}
+.prose .k,.prose .kn,.prose .kd,.prose .ow{font-weight:700}
+/* equations (KaTeX): wide ones scroll sideways instead of overflowing on phones */
+.prose .katex-display{margin:1.1em 0 1.3em;overflow-x:auto;overflow-y:hidden;padding:2px 0}
+/* margin notes: footnotes [^1] become notes beside the text on wide screens, and tap-to-open notes on phones */
+.prose .sn-ref{color:var(--acc);font-family:var(--f-body);font-weight:600;padding:0 1px}
+.sn-ref sup{font-size:.7em;line-height:0}
+.sn{float:right;clear:right;width:clamp(180px,20vw,250px);margin:.3em calc(-1 * (clamp(180px,20vw,250px) + 4vw)) .8em 0;font-family:var(--f-body);font-size:13px;line-height:1.5;color:var(--muted);transition:color .3s}
+.sn b{color:var(--acc);font-weight:600;margin-right:5px}
+.sn.flash{color:var(--fg)}
+.prose .footnotes,.prose section.footnotes{font-family:var(--f-body);font-size:14.5px;line-height:1.55;border-top:1px solid var(--rule);padding-top:12px;margin-top:2em}
+.has-sn .footnotes{display:none}
+.pnav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 24px;width:min(640px,58vw);margin:36px 0 0;padding-top:18px;border-top:1px solid var(--rule);font-size:15px}
+.pnav a{text-decoration:none}
+.pnav span{display:block;font-size:12px;color:var(--muted)}
+.pnav .pn-next{text-align:right;margin-left:auto}
+@media (max-width:760px){
+  .page{padding:0 20px}
+  .hero{padding:96px 0 34px}
+  .pt{font-size:46px}
+  .pj{grid-template-columns:minmax(0,1fr);gap:12px}
+  .nl-a{grid-template-columns:minmax(0,1fr);gap:4px}
+  .nl-g{text-align:left}
+  .bp{grid-template-columns:minmax(0,1fr);gap:6px;padding:24px 0 26px}
+  .bp-d{padding-top:0}
+  .post{padding-top:76px}
+  .meta,.prose,.pnav{width:auto}
+  .sn{display:none;float:none;width:auto;margin:.2em 0 1em;padding-left:12px;border-left:2px solid var(--acc)}
+  .sn.open{display:block}
+  .prose .katex-display{font-size:.86em}
+}

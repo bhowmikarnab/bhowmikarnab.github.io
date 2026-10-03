@@ -1,0 +1,30 @@
+---
+layout: default
+title: Code
+description: Research code by Arnab Bhowmik, kept on GitHub.
+section: code
+permalink: /code/
+styles: ["/assets/css/pages.css"]
+---
+{%- comment -%} The projects come from _data/code.yml. {%- endcomment %}
+{%- assign projects = site.data.code | default: "" -%}
+{%- assign count = projects | size -%}
+<main id="main" class="page">
+  <section class="hero">
+    <h1 class="pt">Code</h1>
+    <p class="lede">Code from my research, kept on <a href="https://github.com/bhowmikarnab" target="_blank" rel="noopener">GitHub<span class="vh"> (opens in a new tab)</span></a>.</p>
+  </section>
+  {%- if count > 0 %}
+  <ul class="proj">
+    {%- for p in projects %}
+    <li class="pj">
+      <div><h2 class="pj-n">{{ p.name }}</h2>{% if p.description %}<p class="pj-d">{{ p.description }}</p>{% endif %}
+        <p class="act">{% if p.code and p.code != "" %}<a href="{{ p.code }}" target="_blank" rel="noopener">CODE ↗<span class="vh"> (opens in a new tab)</span></a>{% endif %}{% if p.paper and p.paper != "" %}<a href="{{ p.paper }}" target="_blank" rel="noopener">PAPER ↗<span class="vh"> (opens in a new tab)</span></a>{% endif %}</p></div>
+      <dl class="pj-m">{% if p.language %}<dt>Language</dt><dd>{{ p.language }}</dd>{% endif %}{% if p.method %}<dt>Method</dt><dd>{{ p.method }}</dd>{% endif %}{% if p.licence %}<dt>Licence</dt><dd>{{ p.licence }}</dd>{% endif %}</dl>
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- else %}
+  <p class="empty">Research code will be shared here soon. Meanwhile, my repositories are on <a class="ln" href="https://github.com/bhowmikarnab" target="_blank" rel="noopener">GitHub<span class="vh"> (opens in a new tab)</span></a>.</p>
+  {%- endif %}
+</main>

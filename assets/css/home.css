@@ -1,0 +1,107 @@
+/* Home page: five full-screen chapters over the grain animations (atom → galaxy → droplet → interference → Feynman diagram). */
+canvas.layer{position:fixed;inset:0;width:100vw;height:100vh;display:block;pointer-events:none}
+#bg{z-index:0}#fg{z-index:2}
+main{position:relative}
+/* words always sit above every grain layer; a soft pool of page colour behind each text block thins the grains there, so text stays crisp */
+.ch .in,.t1{position:relative;z-index:3}
+.ch .in::before,.t1::before{content:"";position:absolute;inset:-18vh -12vw -18vh -10vw;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(var(--bgrgb),.9),rgba(var(--bgrgb),.6) 52%,rgba(var(--bgrgb),0))}
+.ch{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:52px 8vw 0 6vw;position:relative}
+.ch .in{max-width:36vw}
+.ch1{flex-direction:row;align-items:center;justify-content:space-between;padding:52px 0 0 6vw}
+.t1{max-width:58vw}
+.ttl{font-family:var(--f-display);font-size:clamp(30px,4.6vw,62px);font-weight:600;letter-spacing:.02em;line-height:1.05;margin:0;text-transform:uppercase}   /* shown in capitals; the HTML text stays "Arnab Bhowmik" so screen readers say the name */
+.p{font-size:clamp(14px,1.2vw,17px);color:var(--fg);line-height:1.6;margin:12px 0 0}
+.cue{color:var(--muted)}
+.h{font-family:var(--f-display);font-size:clamp(22px,2.4vw,34px);font-weight:600;letter-spacing:-.01em;margin:0 0 10px}
+.phw{position:relative;z-index:1;width:clamp(130px,24vmin,240px);aspect-ratio:1;border-radius:50%;overflow:hidden;flex-shrink:0;margin-right:16vw;background:rgba(127,127,127,.25);opacity:0}
+.phw img{width:100%;height:100%;object-fit:cover;display:block}
+.no-js .phw,.no-js .t1{opacity:1!important}
+/* line under the name: position | role | teaching, in the typewriter face; each "|" sits in the gap before its tag, so a wrapped line never starts with "|" */
+.tag{display:flex;flex-wrap:wrap;column-gap:1.2em;overflow:hidden;font-family:var(--f-mono);font-size:clamp(11px,1.1vw,14px);letter-spacing:.1em;line-height:1.7;margin:14px 0 0;color:var(--fg)}
+.tag .tg{position:relative;white-space:nowrap}
+.tag .tg::before{content:"|";content:"|" / "";position:absolute;left:-.6em;transform:translateX(-50%);letter-spacing:0;color:var(--muted)}
+
+/* ABOUT: bio, education list, interests */
+.ch .in.ab{max-width:40vw}
+.ab h3.ab-k{font-family:var(--f-mono);font-size:10.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px;line-height:1.4}
+.edu{list-style:none;margin:0;padding:0}
+.edu li{margin:0;padding:7px 0;border-top:1px solid var(--rule)}
+.edu li:last-child{border-bottom:1px solid var(--rule)}
+.ed-top{display:flex;justify-content:space-between;gap:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.ed-y{color:var(--muted);white-space:nowrap}
+.ed-i{display:block;font-size:clamp(12.5px,1vw,14px);line-height:1.45;margin-top:2px}
+.ed-s{display:block;font-size:clamp(12px,.95vw,13px);line-height:1.45;color:var(--muted);margin-top:1px}
+.ab .ab-x{margin-top:0}
+
+/* RESEARCH HIGHLIGHTS: four cards; a glow follows the cursor (blue, green, yellow, red across the row) */
+.ch .in.wide{max-width:none;width:100%}
+.ch .in.wide::before{inset:-6vh -4vw;background:radial-gradient(closest-side,rgba(var(--bgrgb),.55),rgba(var(--bgrgb),.25) 60%,rgba(var(--bgrgb),0))}
+#research{justify-content:flex-start;padding-top:calc(52px + 12vh)}   /* cards sit high so the droplet splash stays visible below them */
+.rgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
+.rc{--mx:30%;--my:20%;--gh:275;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:0;padding:15px 16px 12px;border:0;border-radius:0;background:var(--card);transition:box-shadow .4s,transform .4s,opacity .35s,filter .35s}
+.rc::before{content:"";position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s;background:radial-gradient(380px circle at var(--mx) var(--my),hsl(var(--gh) 90% var(--vl) / var(--va)),hsl(calc(var(--gh) - 20) 85% 45% / .3) 40%,transparent 72%),radial-gradient(240px circle at 85% 100%,hsl(calc(var(--gh) + 30) 90% 70% / .22),transparent 70%)}
+.rc:hover,.rc:focus-within{box-shadow:0 0 36px -6px hsl(var(--gh) 90% 60% / .65);transform:translateY(-3px)}
+/* while one card is hovered / focused, the others step back: dimmed, never blurred */
+.rgrid:has(.rc:hover) .rc:not(:hover),.rgrid:has(.rc:focus-within) .rc:not(:focus-within){filter:saturate(.6);transform:scale(.985)}
+.rgrid:has(.rc:hover) .rc:not(:hover)>*,.rgrid:has(.rc:focus-within) .rc:not(:focus-within)>*{opacity:.4}
+.rc:hover::before,.rc:focus-within::before{opacity:1}
+.rc>*{position:relative;transition:opacity .35s}
+.rc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.rc-sym{font-family:var(--f-display);font-weight:600;font-size:clamp(30px,3vw,46px);line-height:1;letter-spacing:-.01em}
+.rc-sym sub{font-size:.42em;letter-spacing:0}
+.rc-no{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--muted);padding-top:6px}
+.rc h3{font-family:var(--f-body);font-weight:600;font-size:clamp(14px,1.15vw,16px);line-height:1.3;margin:auto 0 4px;padding-top:12px}
+.rc p{font-size:clamp(12px,.9vw,13px);line-height:1.45;margin:0}
+.rc .rc-ref{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px solid var(--rule)}
+.rc .rc-ref a{color:inherit;text-decoration:none}
+.rc .rc-ref a:hover,.rc .rc-ref a:focus-visible{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+
+/* RECENT WORKS: the two newest papers from _data/publications.yml, numbered rows with an ABSTRACT +/− toggle */
+.wk-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.wk{list-style:none;margin:10px 0 0;padding:0 14px;background:rgba(var(--bgrgb),.82)}
+.wk-row{display:grid;grid-template-columns:clamp(40px,5vw,72px) minmax(0,1fr);gap:clamp(14px,2.4vw,32px);align-items:start;margin:0;padding:clamp(11px,1.7vh,18px) 0;border-top:1px solid var(--rule)}
+.wk-row:last-child{border-bottom:1px solid var(--rule)}
+.wk-no,.wk h3{font-family:var(--f-display);font-weight:600;font-size:clamp(18px,1.8vw,26px);line-height:1.15;letter-spacing:-.01em;margin:0}
+.wk-meta{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--muted);margin:6px 0 0}
+.wk-meta strong{font-weight:400;color:var(--fg)}
+.wk-links{display:flex;flex-wrap:wrap;gap:14px;margin:6px 0 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em}
+.wk-links a,.wk-all{color:inherit;text-decoration:none;position:relative;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em}
+.wk-links a::after,.wk-all::after,.wk-abt::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.wk-links a:hover::after,.wk-links a:focus-visible::after,.wk-all:hover::after,.wk-all:focus-visible::after,.wk-abt:hover::after,.wk-abt:focus-visible::after,.wk-abt[aria-expanded="true"]::after{transform:scaleX(1)}
+.wk-main{max-width:820px}
+.wk-abt{position:relative}
+.wk-abt .pm{display:inline-block;width:.8em;text-align:center}
+.wk-abs{grid-column:2 / -1;margin:2px 0 4px;padding:10px 0 4px 16px;border-left:2px solid var(--acc)}
+.wk-abs p{font-size:clamp(12.5px,.95vw,14px);line-height:1.6;margin:0;max-width:92ch}
+
+/* CONTACT: e-mail addresses (spam-protected, filled in by the page script) and profile links */
+.ct-lead{font-size:clamp(14px,1.2vw,17px);line-height:1.6;margin:0 0 14px}
+.ct-mails{list-style:none;margin:0 0 18px;padding:0}
+.ct-mails li{margin:0 0 10px}
+.ct-mails li:last-child{margin-bottom:0}
+.cm-k{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.ct-addr{font-family:var(--f-display);font-weight:600;font-size:clamp(16px,1.7vw,22px);letter-spacing:-.01em;color:inherit;text-decoration:none;position:relative;overflow-wrap:anywhere}
+.ct-addr::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.ct-addr:hover::after,.ct-addr:focus-visible::after{transform:scaleX(1)}
+.ct-soc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
+.ct-soc li{margin:0;border-top:1px solid var(--rule)}
+.ct-soc li:nth-last-child(-n+2){border-bottom:1px solid var(--rule)}
+.ct-soc a{display:inline-flex;align-items:center;gap:10px;padding:10px 0;color:inherit;text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.ct-soc svg{display:block;width:16px;height:16px;flex-shrink:0;fill:currentColor;transition:color .25s}
+.ct-soc .sn{position:relative}
+.ct-soc .ar{margin-left:-4px}
+.ct-soc .sn::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.ct-soc a:hover svg,.ct-soc a:focus-visible svg{color:var(--acc)}
+.ct-soc a:hover .sn::after,.ct-soc a:focus-visible .sn::after{transform:scaleX(1)}
+.ct-note{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--muted);margin:14px 0 0}
+
+@media (prefers-reduced-motion:reduce){.rc:hover,.rc:focus-within{transform:none}}
+@media (max-width:760px){
+  .wk-row{grid-template-columns:30px minmax(0,1fr);gap:12px}.wk-no,.wk h3{font-size:17px}
+  .rgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:80%;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 8px}.rc{scroll-snap-align:start;min-height:0}   /* phone: swipe sideways through the cards */
+  .ch1{flex-direction:column;justify-content:center;gap:22px;padding:52px 20px 0;text-align:center}
+  .t1{order:2;max-width:100%}.phw{order:1;margin-right:0}
+  .tag{display:block}.tag .tg{display:block}.tag .tg::before{display:none}   /* phone: one tag per line, centred, no separators */
+  .ch{padding:52px 20px 0}.ch .in,.ch .in.ab{max-width:100%}
+  .ct-soc{column-gap:16px}
+}

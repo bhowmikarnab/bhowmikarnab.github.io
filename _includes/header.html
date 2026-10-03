@@ -1,0 +1,20 @@
+{%- comment -%} The header on every page: logo, menu, sound + light/dark switch. On the home page ABOUT / RESEARCH / CONTACT scroll within the page. {%- endcomment -%}
+{%- if page.home %}{% assign h = "" %}{% else %}{% assign h = "/" | relative_url %}{% endif -%}
+{%- assign s = page.section -%}
+<header id="hd">
+  {% if page.home %}<button class="lg" id="lg" type="button" aria-label="Back to top">{% else %}<a class="lg" href="{{ '/' | relative_url }}" aria-label="Arnab Bhowmik, home">{% endif %}<span class="logo">ab<i>.</i></span><span class="hn" id="hn"><span class="dv"></span><span class="nt">ARNAB<br>BHOWMIK</span></span>{% if page.home %}</button>{% else %}</a>{% endif %}
+  <nav class="menu" aria-label="Main">
+    <a href="{{ h }}#about" data-go="about">ABOUT</a><a href="{{ h }}#research" data-go="research">RESEARCH</a>
+    <a href="{{ '/publications/' | relative_url }}"{% if s == "publications" %} aria-current="page"{% endif %}>PUBLICATIONS</a><a href="{{ '/code/' | relative_url }}"{% if s == "code" %} aria-current="page"{% endif %}>CODE</a><div class="dd"><button class="ddb{% if s == 'notes' or s == 'blog' %} cur{% endif %}" type="button" aria-expanded="false" aria-controls="ddw">WRITING<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+      <div class="ddm" id="ddw"><a href="{{ '/notes/' | relative_url }}"{% if s == "notes" %} aria-current="page"{% endif %}><span class="ddt">NOTES</span></a><a href="{{ '/blog/' | relative_url }}"{% if s == "blog" %} aria-current="page"{% endif %}><span class="ddt">BLOG</span></a></div></div><a href="{{ '/assets/Arnab_Bhowmik_CV.pdf' | relative_url }}" target="_blank" rel="noopener">CV<span class="vh"> (PDF, opens in a new tab)</span></a>
+    <a href="{{ h }}#contact" data-go="contact">CONTACT</a>
+    <span class="icons"><span class="glass"><button class="ib snd" type="button" aria-label="Turn sound on" aria-pressed="false"></button><span class="gdv"></span><button class="ib thm" type="button" aria-label="Switch theme"></button></span></span>
+  </nav>
+  <span class="mob"><span class="glass"><button class="ib snd" type="button" aria-label="Turn sound on" aria-pressed="false"></button><span class="gdv"></span><button class="ib thm" type="button" aria-label="Switch theme"></button></span><button class="ib" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></span>
+</header>
+<div class="rule"></div>
+<nav class="drop" id="drop" aria-label="Main (mobile)">
+  <a href="{{ h }}#about" data-go="about">ABOUT</a><a href="{{ h }}#research" data-go="research">RESEARCH</a>
+  <a href="{{ '/publications/' | relative_url }}"{% if s == "publications" %} aria-current="page"{% endif %}>PUBLICATIONS</a><a href="{{ '/code/' | relative_url }}"{% if s == "code" %} aria-current="page"{% endif %}>CODE</a><div class="msub"><button class="msb{% if s == 'notes' or s == 'blog' %} cur{% endif %}" type="button" aria-expanded="false" aria-controls="mfly"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5"/></svg>WRITING</button><div class="mfly" id="mfly"><a href="{{ '/notes/' | relative_url }}"{% if s == "notes" %} aria-current="page"{% endif %}>NOTES</a><a href="{{ '/blog/' | relative_url }}"{% if s == "blog" %} aria-current="page"{% endif %}>BLOG</a></div></div><a href="{{ '/assets/Arnab_Bhowmik_CV.pdf' | relative_url }}" target="_blank" rel="noopener">CV<span class="vh"> (PDF, opens in a new tab)</span></a>
+  <a href="{{ h }}#contact" data-go="contact">CONTACT</a>
+</nav>

@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- if page.title %}{% assign full_title = page.title | append: " · " | append: site.title %}{% else %}{% assign full_title = site.title | append: " · " | append: site.tagline %}{% endif %}
+{%- if page.description %}{% assign desc = page.description %}{% else %}{% assign desc = site.description %}{% endif %}
+<title>{{ full_title }}</title>
+<meta name="description" content="{{ desc | strip_html | strip_newlines | escape }}">
+<meta name="author" content="{{ site.author }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:type" content="{% if page.katex %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ full_title }}">
+<meta property="og:description" content="{{ desc | strip_html | strip_newlines | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ '/assets/img/og-image.png' | absolute_url }}">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Arnab Bhowmik, Research Scholar in theoretical physics">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+<link rel="icon" type="image/png" sizes="64x64" href="{{ '/assets/img/favicon-64.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
+<meta name="theme-color" content="#232122" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F1F1EC" media="(prefers-color-scheme: light)">
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }} · Blog" href="{{ '/feed.xml' | relative_url }}">
+<!-- set the colour theme before the page is drawn, so it never flashes the wrong colours -->
+<script>document.documentElement.classList.remove('no-js');try{document.documentElement.dataset.theme=localStorage.getItem('ab-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark')}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Karla:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}">
+{%- for s in page.styles %}
+<link rel="stylesheet" href="{{ s | relative_url }}">
+{%- endfor %}
+{%- if page.katex %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="{{ '/assets/css/pages.css' | relative_url }}">
+{%- endif %}
+{%- if page.home %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Arnab Bhowmik","url":"{{ site.url }}","image":"{{ '/assets/img/portrait-600.jpg' | absolute_url }}",
+ "jobTitle":"Research Scholar","affiliation":{"@type":"CollegeOrUniversity","name":"Indian Institute of Engineering Science and Technology, Shibpur"},
+ "knowsAbout":["Bose–Einstein condensates","Quantum droplets","Dipolar quantum gases","Gross–Pitaevskii equation"],
+ "sameAs":["https://orcid.org/0009-0007-7743-1318","https://scholar.google.com/citations?user=xj_XwUMAAAAJ","https://github.com/bhowmikarnab","https://www.linkedin.com/in/arnab-bhowmik-2a677596/","https://www.researchgate.net/profile/Arnab-Bhowmik-5"]}
+</script>
+{%- endif %}

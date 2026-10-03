@@ -1,0 +1,7 @@
+/* 404 page: the Milky Way behind a short message */
+#c404{position:fixed;inset:0;width:100vw;height:100vh;display:block;pointer-events:none;z-index:0}
+.nf-box{position:relative;z-index:1;min-height:100vh;padding:52px 20px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+.nf .big{font-family:var(--f-mono);font-weight:400;font-size:clamp(56px,9vw,110px);letter-spacing:.08em;line-height:1}
+.nf .msg{font-family:var(--f-display);font-size:clamp(16px,1.6vw,20px)}
+.nf .home{margin-top:12px;font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-decoration:none;border-bottom:1px solid var(--fg);padding:0 0 3px}
+.nf .home:hover,.nf .home:focus-visible{border-bottom-width:2px;padding-bottom:2px}

@@ -1,0 +1,26 @@
+---
+layout: default
+title: Blog
+description: Essays and ideas from life in research, by Arnab Bhowmik.
+section: blog
+permalink: /blog/
+styles: ["/assets/css/pages.css"]
+---
+{%- comment -%} Every file in the _posts folder appears here, newest first. {%- endcomment %}
+{%- assign count = site.posts | size -%}
+<main id="main" class="page">
+  <section class="hero">
+    <h1 class="pt">Blog</h1>
+    <p class="lede">Essays and ideas from life in research.</p>
+  </section>
+  {%- if count > 0 %}
+  <ol class="bl" reversed>
+    {%- for post in site.posts %}
+    {%- assign words = post.content | strip_html | number_of_words -%}
+    <li class="bp"><span class="bp-d"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time></span><div><h2 class="bp-t"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2><p class="bp-x">{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 45 }}{% endif %}</p><p class="bp-m">{{ words | divided_by: 200 | at_least: 1 }} min read</p></div></li>
+    {%- endfor %}
+  </ol>
+  {%- else %}
+  <p class="empty">The first post is on its way.</p>
+  {%- endif %}
+</main>
